@@ -1,0 +1,22 @@
+npm init -y 		-> Iniciar el proyecto con node, solo el backend
+
+npm i	express	-> 
+	mongoose	-> conexion de la base de datos
+	cors		-> nos sirve para conectar el back con el front
+	dotenv		-> ayuda para las variables de entorno
+
+npm i nodemon -D 	-> reiniciar servidor cada vez que se guarda
+			-> el '-D' sirve para separar la dependencia
+			
+******error en la consola al prender el server********
+mongoose.connect(URI, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true-----------------------> *agregar esta linea en el archivo database.js*
+});
+
+npx nodemon src/index.js 	-> inicia el dotenv
+
+npm run dev 			-> iniciar el dotenv desde el package.json
+
+
