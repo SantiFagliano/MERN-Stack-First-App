@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 export default class Navigation extends Component {
@@ -19,7 +19,7 @@ export default class Navigation extends Component {
                                 <li className="nav-item">
                                     <Link className="nav-link" to="/create">Create Note</Link>
                                 </li>
-                                <li claclassNamess="nav-item">
+                                <li className="nav-item">
                                     <Link className="nav-link" to="/user">Create User</Link>
                                 </li>
                             </ul>
@@ -27,6 +27,6 @@ export default class Navigation extends Component {
                     </div>
                 </nav>
             </div>
-        )
+        );
     }
 }
