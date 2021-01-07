@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import { format } from 'timeago.js';
+import { Link } from 'react-router-dom';
+
 export default class NotesList extends Component {
+
     state = {
         notes: []
     }
@@ -10,21 +13,23 @@ export default class NotesList extends Component {
         this.getNotes();
 
     }
+
     async getNotes() {
         const res = await axios.get('http://localhost:4000/api/notes');
         this.setState({ notes: res.data });
     }
-    deleteNote = async (id) => {
-        const res = await axios.delete('http://localhost:4000/api/notes/' + id);
-        this.getNotes();
 
+    deleteNote = async (id) => {
+        await axios.delete('http://localhost:4000/api/notes/' + id);
+        this.getNotes();
     }
+
     render() {
         return (
             <div className="row">
                 {
                     this.state.notes.map(note => (
-                        <div className="col-md-4 mb-2" key={note._id}>
+                        <div className="col-md-4 mb-3" key={note._id}>
                             <div className="card">
                                 <div className="card-header row justify-content-between">
                                     <p className="col-10">{note.title}</p>
@@ -36,6 +41,9 @@ export default class NotesList extends Component {
                                         <footer className="blockquote-footer mt-1">{note.author}</footer>
                                         <footer className="blockquote-footer ">{format(note.date)}</footer>
                                     </blockquote>
+                                </div>
+                                <div className="card-footer">
+                                    <Link className="btn btn-outline-success" to={"/edit/" + note._id}>Editar Nota</Link>
                                 </div>
                             </div>
                         </div>
